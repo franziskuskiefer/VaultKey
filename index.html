@@ -1,0 +1,37 @@
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="description" content="Vault Key Generator">
+	<meta name="author" content="Franziskus Kiefer">
+	<link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet">
+	<link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.no-icons.min.css" rel="stylesheet">
+	<link href="jumbotron-narrow.css" rel="stylesheet">
+	<script src="nacl.js"></script>
+	<script src="jquery.min.js"></script>
+	<script type="text/javascript" src="qrcode.min.js"></script>
+	<script>
+	function createRandomQR(){
+	        var rand = nacl.to_hex(nacl.random_bytes(32));
+	        new QRCode(document.getElementById("qrcode"), ""+rand);
+	        return "0x"+rand;
+	}
+	</script>
+	<style>
+	img {
+		margin-left: auto;
+		margin-right: auto;
+	}
+	</style>
+</head>
+<body>
+	<div class="container">
+	        <div class="jumbotron">
+			<div id="qrcode"></div>
+		</div>
+		<div id="rand" class="well text-center"></div>
+	</div>	
+
+	<script> document.getElementById("rand").innerHTML = createRandomQR(); </script>
+</body>
+</html>
